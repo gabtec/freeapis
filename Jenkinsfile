@@ -8,7 +8,7 @@
 //     }
 //   }
 // }
-node('Build-In Node') {
+node {
   checkout scm
   stage('Build') {
     docker.withRegistry('https://reg.gabtec.pt', 'harbor_key') {
