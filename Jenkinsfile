@@ -6,6 +6,7 @@ pipeline {
         echo "Starting building image..."
         script {
           sh 'docker build -t reg.gabtec.pt/freeapis:v0.1 .'
+          sh 'docker push reg.gabtec.pt/freeapis:v0.1'
         }
       }
     }
