@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "reg.gabtec.pt/gabtec"
+    registry = "reg.gabtec.pt/freeapis"
     registryCredential = 'harbor-id'
   }
 
@@ -12,12 +12,14 @@ pipeline {
         script {
           docker.build registry + ":$BUILD_NUMBER"
         }
+        echo "Docker image build OK."
       }
     }
     stage('Deploy Image') {
       steps{
+        echo "Starting image deploy..."
         script {
-          docker.withRegistry( '', registryCredential ) {
+          docker.withRegistry( registry, registryCredential ) {
             dockerImage.push()
           }
         }
