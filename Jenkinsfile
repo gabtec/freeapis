@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "reg.gabtec.pt/freeapis"
+    registry = "https://reg.gabtec.pt/freeapis"
     registryCredential = 'harbor-id'
   }
 
