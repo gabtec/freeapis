@@ -1,5 +1,5 @@
+def dockerImage
 pipeline {
-  def app
   
   environment {
     registry = "reg.gabtec.pt/gabtec/freeapis"
@@ -13,7 +13,7 @@ pipeline {
         echo "Starting building image..."
         script {
           // docker.build registry + ":$BUILD_NUMBER"
-          app = docker.build registry
+          dockerImage = docker.build registry
         }
         echo "Docker image build OK."
       }
@@ -24,8 +24,8 @@ pipeline {
         script {
           docker.withRegistry( 'https://reg.gabtec.pt/', registryCredential ) {
             //dockerImage.push()
-            app.push("${env.BUILD_NUMBER}")
-            app.push("latest")
+            dockerImage.push("${env.BUILD_NUMBER}")
+            dockerImage.push("latest")
           }
         }
       }
