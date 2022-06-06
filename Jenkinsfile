@@ -1,6 +1,6 @@
 def dockerImage
-def pkFile = readJSON file: 'package.json'
-def pkVersion = pkFile.version
+def pkFile
+def pkVersion
 
 pipeline {
   
@@ -25,6 +25,9 @@ pipeline {
       steps{
         echo "Starting image deploy..."
         script {
+          pkFile = readJSON file: 'package.json'
+          pkVersion = pkFile.version
+
           docker.withRegistry( 'https://reg.gabtec.pt/', registryCredential ) {
             //dockerImage.push()
             dockerImage.push("v${pkVersion}")
