@@ -1,4 +1,7 @@
 def dockerImage
+def pkFile = readJSON file: 'package.json'
+def pkVersion = pkFile.version
+
 pipeline {
   
   environment {
@@ -24,7 +27,7 @@ pipeline {
         script {
           docker.withRegistry( 'https://reg.gabtec.pt/', registryCredential ) {
             //dockerImage.push()
-            dockerImage.push("${env.BUILD_NUMBER}")
+            dockerImage.push("v${pkVersion}")
             dockerImage.push("latest")
           }
         }
@@ -32,7 +35,7 @@ pipeline {
     }
     stage('Remove Unused docker image') {
       steps{
-        sh "docker rmi $registry:$BUILD_NUMBER"
+        sh "docker rmi $registry:v$pkVersion"
       }
     }
   }

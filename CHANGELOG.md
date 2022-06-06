@@ -23,16 +23,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Section about "changelog" vs "CHANGELOG".
 
-## [0.0.1] - 2014-05-31
+## [1.0.0] - 2022-06-06
 
 ### Added
 
-- This CHANGELOG file to hopefully serve as an evolving example of a
-  standardized open source project CHANGELOG.
-- CNAME file to enable GitHub Pages custom domain
-- README now contains answers to common questions about CHANGELOGs
-- Good examples and basic guidelines, including proper date formatting.
-- Counter-examples: "What makes unicorns cry?"
+- Add "GET /v1/calendario/bissexto/:ano"
+- First release
 
-[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...HEAD
-[0.0.1]: https://github.com/olivierlacan/keep-a-changelog/releases/tag/v0.0.1
+[unreleased]: https://github.com/gabtec/freeapis/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/gabtec/freeapis/releases/tag/v1.0.0
