@@ -4,7 +4,7 @@
   "description": "Gabriel's Free API's",
   "main": "src/server.js",
   "scripts": {
-    "start": "node -r dotenv/config src/server.js",
+    "start": "node src/server.js",
     "dev": "nodemon -r dotenv/config src/server.js",
     "deploy": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
