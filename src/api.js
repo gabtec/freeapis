@@ -50,14 +50,13 @@ app.use(express.json({ limit: "1kb" }));
 // router handler modules
 const LeapYearEndpoints = require("./api/calendar-leap-year/leap.routes");
 const HolidaysEndpoints = require("./api/calendar-holidays/holidays.routes");
-// const FeriadosEndpoints = require("./api/calendario-feriados/feriados.routes");
-// const DistritosEndpoints = require("./api/mapa-distritos/distritos.routes");
+const DistrictsEndpoints = require("./api/pt-districts/districts.routes");
 // const InstSaudeEndpoints = require("./api/saude-instituicoes/instituicoes.routes");
 
 // ROUTES
 app.use("/v1/calendario/bissexto", LeapYearEndpoints);
 app.use("/v1/calendario/feriados", HolidaysEndpoints);
-// app.use("/v1/mapa/distritos", DistritosEndpoints);
+app.use("/v1/portugal/distritos", DistrictsEndpoints);
 // app.use("/v1/saude/instituicoes", InstSaudeEndpoints);
 
 /*
