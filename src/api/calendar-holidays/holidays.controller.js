@@ -7,7 +7,12 @@ module.exports = {
 
 // GET /v1/calendario/feriados/:ano
 function getHolidays(req, res, next) {
-  const year = req.params.ano;
+  const year = Number(req.params.ano);
+
+  if (!year)
+    return res.status(400).json({
+      errorMsg: "Deve indicar o ano da pesquisa.",
+    });
 
   const mobileHolidays = {
     Páscoa: engine.getEaster(year),
