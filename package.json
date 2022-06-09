@@ -1,13 +1,13 @@
 {
   "name": "freeapis",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Gabriel's Free API's",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon -r dotenv/config src/server.js",
     "deploy": "gulp",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "dotenv": "^16.0.1",
+    "jest": "^28.1.1",
     "nodemon": "^2.0.16"
   }
 }
