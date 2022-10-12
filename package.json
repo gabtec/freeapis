@@ -1,6 +1,6 @@
 {
   "name": "freeapis",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Gabriel's Free API's",
   "main": "src/server.js",
   "scripts": {
@@ -25,7 +25,9 @@
     "cors": "^2.8.5",
     "date-fns": "^2.28.0",
     "express": "^4.18.1",
-    "helmet": "^5.1.0"
+    "helmet": "^5.1.0",
+    "http-status": "^1.5.3",
+    "swagger-ui-express": "^4.5.0"
   },
   "devDependencies": {
     "dotenv": "^16.0.1",

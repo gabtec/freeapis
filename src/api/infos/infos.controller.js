@@ -1,11 +1,11 @@
 const pkg = require("../../../package.json");
 
 module.exports = {
-  getDocs,
+  getInfos,
 };
 
-// GET /v1/docs
-function getDocs(req, res, next) {
+// GET /v1/infos
+function getInfos(req, res, next) {
   return res.json({
     api: "Gabtec's FreeAPI",
     version: pkg.version,

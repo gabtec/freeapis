@@ -2,6 +2,10 @@ const express = require("express");
 const cors = require("cors");
 const compression = require("compression");
 const helmet = require("helmet");
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("../documentation/openapi.js");
+const serverUtils = require("./serverUtils/_index.js");
+const { RouteNotFoundError } = require("./errors/_index.js");
 
 /*
 |------------------------------------------------------------
@@ -36,6 +40,18 @@ app.use(express.json({ limit: "1kb" }));
 |--------------------------------------------------------------------------
 |
 */
+const swaggerOptions = {
+  explorer: true, // add a navbar search field
+  // requestInterceptor: function (request) {
+  //   request.headers.Origin = `http://localhost:4000`;
+  //   return request;
+  // },
+};
+app.use(
+  "/v1/docs",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerDocument, swaggerOptions)
+);
 
 /*
 |------------------------------------------------------------
@@ -48,7 +64,7 @@ app.use(express.json({ limit: "1kb" }));
 |
 */
 // router handler modules
-const DocsEndpoints = require("./api/docs/docs.routes");
+const InfosEndpoints = require("./api/infos/infos.routes");
 const LeapYearEndpoints = require("./api/calendar-leap-year/leap.routes");
 const HolidaysEndpoints = require("./api/calendar-holidays/holidays.routes");
 const DistrictsEndpoints = require("./api/pt-districts/districts.routes");
@@ -56,12 +72,31 @@ const CitiesEndpoints = require("./api/pt-cities/cities.routes");
 // const InstSaudeEndpoints = require("./api/saude-instituicoes/instituicoes.routes");
 
 // ROUTES
-app.use("/v1/docs", DocsEndpoints);
+app.use("/v1/infos", InfosEndpoints);
 app.use("/v1/calendario/bissexto", LeapYearEndpoints);
 app.use("/v1/calendario/feriados", HolidaysEndpoints);
 app.use("/v1/portugal/distritos", DistrictsEndpoints);
 app.use("/v1/portugal/concelhos", CitiesEndpoints);
 // app.use("/v1/saude/instituicoes", InstSaudeEndpoints);
+// ROUTE_PLACEHOLDER
+
+/*
+|------------------------------------------------------------
+|     ___     _____      ___      
+|    /   |   /  _  \    /   |     
+|   / /| |   | | | |   / /| |     
+|  / /_| |_  | | | |  / /_| |_     
+|  \____  _| | |_| |  \___   _|     
+|      |_|    \___/       |_|
+|-------------------------------------------------------------
+| Must always be the last route
+*/
+
+app.use("*", (req, res, next) => {
+  const msg = `Route "${req.protocol}://${req.headers.host}${req.originalUrl}" not found.`;
+
+  return serverUtils.sendErrorResponse(res, new RouteNotFoundError(msg));
+});
 
 /*
 |------------------------------------------------------------
@@ -73,5 +108,6 @@ app.use("/v1/portugal/concelhos", CitiesEndpoints);
 |------------------------------------------------------------
 |
 */
+app.use(serverUtils.catchAndParseErrors);
 
 module.exports = app;
