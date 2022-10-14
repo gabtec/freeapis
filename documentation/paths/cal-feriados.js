@@ -5,7 +5,7 @@ module.exports = {
     description: "",
     parameters: [
       {
-        name: "year",
+        name: "ano",
         in: "path",
         description: "The year to check",
         required: true,

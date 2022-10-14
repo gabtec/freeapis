@@ -5,7 +5,7 @@ module.exports = {
     description: "",
     parameters: [
       {
-        name: "year",
+        name: "ano",
         in: "path",
         description: "The year to check",
         required: true,
@@ -13,6 +13,7 @@ module.exports = {
           type: "integer",
           format: "int64",
         },
+        example: 2022,
       },
     ],
     responses: {

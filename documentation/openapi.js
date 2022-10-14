@@ -11,8 +11,8 @@ const distritosPathRef = require("./paths/pt-distritos.js");
 const distritoPathRef = require("./paths/pt-distrito-single.js");
 const responseSuccessModelRef = require("./model/response-success.js");
 const responseErrorModelRef = require("./model/response-error.js");
-const feriadosPathRef = require("./paths/cal-bissexto.js");
-const bissextoPathRef = require("./paths/cal-feriados.js");
+const feriadosPathRef = require("./paths/cal-feriados.js");
+const bissextoPathRef = require("./paths/cal-bissexto.js");
 const leapYearModelRef = require("./model/leap-year.js");
 const hollidaysModelRef = require("./model/hollidays.js");
 
