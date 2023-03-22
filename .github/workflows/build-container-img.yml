@@ -29,5 +29,5 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: ${{ env.REG_URL }}/${{ PROJ_NAME }}:latest, ${{ env.REG_URL }}/${{ PROJ_NAME }}:${{ PROJ_VERSION }}
+          tags: ${{ env.REG_URL }}/${{ env.PROJ_NAME }}:latest, ${{ env.REG_URL }}/${{ env.PROJ_NAME }}:${{ env.PROJ_VERSION }}
           # tags: $REG_URL/$PROJ_NAME:latest, $REG_URL/$PROJ_NAME:${{ github.sha }}
