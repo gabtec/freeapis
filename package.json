@@ -1,6 +1,6 @@
 {
   "name": "freeapis",
-  "version": "1.0.6",
+  "version": "1.0.10",
   "description": "Gabriel's Free API's",
   "main": "src/server.js",
   "scripts": {
