@@ -1,10 +1,10 @@
 name: Build Docker Image CI
 
-on: workflow_dispatch
-# on:
-#   push:
-#     branches: [ "main" ]
-#     branches: [ "ci-actions" ]
+# on: workflow_dispatch
+on:
+  push:
+    #     branches: [ "main" ]
+    branches: ['ci-actions']
 # pull_request:
 #   branches: [ "main" ]
 
