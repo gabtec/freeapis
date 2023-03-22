@@ -10,7 +10,7 @@ on: workflow_dispatch
 
 # workflow global variables
 env:
-  REG_URL: reg.gabtec.pt/oss/
+  REG_URL: reg.gabtec.pt/oss
   PROJ_NAME: freeapis
   PROJ_VERSION: v1.0.10
 
