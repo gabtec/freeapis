@@ -36,5 +36,6 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: ${{ env.IS_ON_MAIN }}
+          load: ${{ !env.IS_ON_MAIN }}
           tags: ${{ env.REG_URL }}/${{ env.PROJ_NAME }}:latest, ${{ env.REG_URL }}/${{ env.PROJ_NAME }}:${{ env.PROJ_VERSION }}
           # tags: $REG_URL/$PROJ_NAME:latest, $REG_URL/$PROJ_NAME:${{ github.sha }}
