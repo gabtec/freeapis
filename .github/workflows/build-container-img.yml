@@ -14,7 +14,7 @@ on:
 env:
   REG_URL: reg.gabtec.pt/oss
   PROJ_NAME: freeapis
-  PROJ_VERSION: v1.1.0
+  # PROJ_VERSION: v1.1.0
   IS_ON_MAIN: ${{ github.ref == 'refs/heads/main' }}
 
 jobs:
@@ -24,6 +24,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Get version from package.json
+        id: get-version
+        run: echo "current-version=$(cat package.json| grep version | cut -f 2 -d ":" | sed 's/[", ]//g')" >> "$GITHUB_OUTPUT"
+
+      - name: Print version in var
+        run: echo 'building v${{ steps.get-version.outputs.current-version }}'
 
       - name: Set up QEMU for Multi-Platform image build
         uses: docker/setup-qemu-action@v2
@@ -43,5 +50,6 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: ${{ env.IS_ON_MAIN }}
-          tags: ${{ env.REG_URL }}/${{ env.PROJ_NAME }}:latest, ${{ env.REG_URL }}/${{ env.PROJ_NAME }}:${{ env.PROJ_VERSION }}
+          tags: ${{ env.REG_URL }}/${{ env.PROJ_NAME }}:latest, ${{ env.REG_URL }}/${{ env.PROJ_NAME }}:v${{ steps.get-version.outputs.current-version }}
+          # tags: ${{ env.REG_URL }}/${{ env.PROJ_NAME }}:latest, ${{ env.REG_URL }}/${{ env.PROJ_NAME }}:${{ env.PROJ_VERSION }}
           # tags: $REG_URL/$PROJ_NAME:latest, $REG_URL/$PROJ_NAME:${{ github.sha }}
