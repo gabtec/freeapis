@@ -5,8 +5,10 @@ on:
   push:
     #     branches: [ "main" ]
     branches: ['main', 'ci-actions']
-# pull_request:
-#   branches: [ "main" ]
+    paths-ignore:
+      - '**/README.md' # updates on docs won't build container images
+  # pull_request:
+  #   branches: [ "main" ]
 
 # workflow global variables
 env:
