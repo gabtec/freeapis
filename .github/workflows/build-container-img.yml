@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     #     branches: [ "main" ]
-    branches: ['ci-actions']
+    branches: ['main', 'ci-actions']
 # pull_request:
 #   branches: [ "main" ]
 
